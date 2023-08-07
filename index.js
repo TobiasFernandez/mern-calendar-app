@@ -10,11 +10,21 @@ ConectMongo();
 
 //directorio publico
 app.use(cors())
+var whitelist = ['http://mern-calendar-app-production-tbo.up.railway.appmern-calendar-app-production-tbo.up.railway.app']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
 //rutas
 //lectura y parseo del body(info que recibo desde postaman en un POST)
 app.use(express.json());
-app.use('/api/auth',require('./routes/auth'));
-app.use('/api/events',require('./routes/eventsRoutes'));
+app.use('/api/auth',cors(corsOptions),require('./routes/auth'));
+app.use('/api/events',cors(corsOptions),require('./routes/eventsRoutes'));
 app.use(express.static('public'));
 
 
