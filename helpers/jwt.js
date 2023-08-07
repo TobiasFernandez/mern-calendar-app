@@ -12,7 +12,7 @@ const CreateJWT=async(name,id)=>{
             name,id
     
         }
-         const token=   jwt.sign(payload,process.env.PRIVATE_KEY,{
+         const token=  await  jwt.sign(payload,process.env.PRIVATE_KEY,{
                 expiresIn:'2h'
             });
         

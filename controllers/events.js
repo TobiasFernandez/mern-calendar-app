@@ -6,13 +6,15 @@ const mongoose=require('mongoose');
 const ReadEvents=async(req,res)=>{
 
     const{msg,id}=req.body
-     const Eventos= await Events.find().populate('user','name')
-    res.status(200).json({
+     const Eventos= await Events.find().populate('_id')
+     
+  return  res.status(200).json({
 
         ok:true,
-        id,
         msg,
-        Eventos
+        Eventos,
+        name:req.name
+      
     })
 };
 
@@ -25,10 +27,12 @@ const CreateEvent=async(req,res)=>{
     try {
       NewEvent.user= req.id
       const nuevo= await NewEvent.save()
-
-       res.status(200).json({
+console.log(nuevo);
+     return  res.status(200).json({
         ok:true,
-       nuevo
+       nuevo,
+        name:req.name
+      
         
         
     })
@@ -84,10 +88,7 @@ const UpdateEvent=async(req,res)=>{
 
 
 
-    res.status(200).json({
-        ok:true,
-        eventoID
-    })
+   
 };
 
 const DelatevEvent=async(req,res)=>{
@@ -99,9 +100,9 @@ const DelatevEvent=async(req,res)=>{
         
         const Event= await Events.findById(eventoID);
         if (!Event) {
-         return   res.status(400).json({
-               error:"el evento no existe"    
-            })
+            return   res.status(400).json({
+                  error:"el evento no existe"    
+               })
         }
 
         if (Event.user.toString() !== idUser) {

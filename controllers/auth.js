@@ -12,6 +12,7 @@ const crearUsuario =async (req,res)=>{
          try {
              let usuario= await Usuario.findOne({email})
              if (usuario) {
+             //   return res.send('ya existe')
              return res.status(400).json({
                  ok:false,
                  msg:'el usuario ya existe'
@@ -68,10 +69,11 @@ const loginUsuer=async(req,res=response)=>{
     const token= await CreateJWT(usuario.name,usuario.id);
    
     if (matchPasswrd) {
-        res.status(200).json(
+      return  res.status(200).json(
             {
                 ok:true,
-                token
+                token,
+                name:usuario.name
             }
         );
     }

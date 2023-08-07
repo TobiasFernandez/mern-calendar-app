@@ -9,14 +9,14 @@ const router = Router();
 
 //api/events
 router.get("/read",[
-    check('msg','el mensaje esta vacio').not().isEmpty(),
-    validationsMiddleware,
+ // check('id','el mensaje esta vacio').isLength({min:2}),
+   validationsMiddleware,
     revalidaation
 ],ReadEvents),
 
 
 router.post("/create",[
-    check('msg',).not().isEmpty(),
+   // check('msg',).not().isEmpty(),
     check("start","la fecha de inicio no es valida").custom(validateDate),
     check("end","la fecha de finalizacion no es valida").custom(validateDate),
     validationsMiddleware,
@@ -25,7 +25,7 @@ router.post("/create",[
 ],CreateEvent)
 
 router.put("/:id",[
-    check('msg').not().isEmpty(),
+   // check('msg').not().isEmpty(),
     validationsMiddleware,
     revalidaation
    
@@ -33,11 +33,19 @@ router.put("/:id",[
 ],UpdateEvent)
 
 router.delete("/:id",[
-    check('msg').notEmpty(),
+ //   check('msg').notEmpty(),
     validationsMiddleware,
     revalidaation
 
 ],DelatevEvent);
+
+router.get("/tobias",(req,res)=>{
+    res.json({
+        ok:true
+    })
+}
+
+);
 
 
 module.exports = router;
