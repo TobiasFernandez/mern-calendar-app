@@ -11,12 +11,12 @@ ConectMongo();
 //directorio publico
 app.use(cors())
 var whitelist = ['https://serene-biscochitos-a1ead1.netlify.app',
-"https://mern-calendar-app-production-dd16.up.railway.app/auth/login",
-"https://mern-calendar-app-production-dd16.up.railway.app/events/create",
-"https://mern-calendar-app-production-dd16.up.railway.app/events/read",
-"https://mern-calendar-app-production-dd16.up.railway.app/events/delete",
-"https://mern-calendar-app-production-dd16.up.railway.app/events/create",
-"https://mern-calendar-app-production-dd16.up.railway.app/events/update"
+"https://mern-calendar-app-production-1e03.up.railway.app/auth/login",
+"https://mern-calendar-app-production-1e03.up.railway.app/events/create",
+"https://mern-calendar-app-production-1e03.up.railway.app/events/read",
+"https://mern-calendar-app-production-1e03.up.railway.app/events/delete",
+"https://mern-calendar-app-production-1e03.up.railway.app/events/create",
+"https://mern-calendar-app-production-1e03.up.railway.app/events/update"
 
 ]
 var corsOptions = {
