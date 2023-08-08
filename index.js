@@ -9,7 +9,7 @@ const app = express();
 ConectMongo();
     
 const corsOpts = {
-    origin: '*',
+    origin: 'https://mern-calendar-app-production-1e03.up.railway.app',
     credentials: true,
     methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
     allowedHeaders: ['Content-Type'],
