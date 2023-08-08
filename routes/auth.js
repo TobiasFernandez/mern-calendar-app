@@ -6,13 +6,14 @@ const { validationsMiddleware } = require('../middleware/validation');
 const { revalidaation } = require('../middleware/revalidationToken');
 
 //host in api/auth
-
+const cors= require('cors')
 
 router.post('/',[
     check('name','the name is empty').not().isEmpty(),
     check('email','the format of the mail is incorrect').isEmail(),
     check('password','the password must have min 4 characters').isLength({min:4}),
-  validationsMiddleware
+  validationsMiddleware,
+ 
 
 ],crearUsuario);
 
@@ -20,7 +21,8 @@ router.post('/',[
 router.post('/new',[
     check('email','the format of the mail is incorrect').isEmail(),
     check('password','the password must have min 4 characters').isLength({min:4}),
-    validationsMiddleware
+    validationsMiddleware,
+ 
 ],loginUsuer);
 
 

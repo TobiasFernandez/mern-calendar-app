@@ -11,7 +11,8 @@ const router = Router();
 router.get("/read",[
  // check('id','el mensaje esta vacio').isLength({min:2}),
    validationsMiddleware,
-    revalidaation
+    revalidaation,
+
 ],ReadEvents),
 
 
@@ -20,14 +21,16 @@ router.post("/create",[
     check("start","la fecha de inicio no es valida").custom(validateDate),
     check("end","la fecha de finalizacion no es valida").custom(validateDate),
     validationsMiddleware,
-    revalidaation
+    revalidaation,
+  
 
 ],CreateEvent)
 
 router.put("/:id",[
    // check('msg').not().isEmpty(),
     validationsMiddleware,
-    revalidaation
+    revalidaation,
+   
    
 
 ],UpdateEvent)

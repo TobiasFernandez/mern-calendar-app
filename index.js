@@ -9,14 +9,16 @@ const app = express();
 ConectMongo();
 
 //directorio publico
-app.use(cors())
 var whitelist = ['https://serene-biscochitos-a1ead1.netlify.app',
 "https://mern-calendar-app-production-1e03.up.railway.app/auth/login",
 "https://mern-calendar-app-production-1e03.up.railway.app/events/create",
 "https://mern-calendar-app-production-1e03.up.railway.app/events/read",
 "https://mern-calendar-app-production-1e03.up.railway.app/events/delete",
 "https://mern-calendar-app-production-1e03.up.railway.app/events/create",
-"https://mern-calendar-app-production-1e03.up.railway.app/events/update"
+"https://mern-calendar-app-production-1e03.up.railway.app/events/update",
+'https://mern-calendar-app-production-1e03.up.railway.app',
+"https://mern-calendar-app-production-1e03.up.railway.app/auth/new"
+
 
 ]
 var corsOptions = {
@@ -28,11 +30,13 @@ var corsOptions = {
     }
   }
 }
+
+app.use(cors(corsOptions))
 //rutas
 //lectura y parseo del body(info que recibo desde postaman en un POST)
 app.use(express.json());
-app.use('/api/auth',cors(corsOptions),require('./routes/auth'));
-app.use('/api/events',cors(corsOptions),require('./routes/eventsRoutes'));
+app.use('/api/auth',require('./routes/auth'));
+app.use('/api/events',require('./routes/eventsRoutes'));
 app.use(express.static('public'));
 
 
