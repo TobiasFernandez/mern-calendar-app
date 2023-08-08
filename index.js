@@ -7,7 +7,7 @@ const cors= require("cors");
 
 const app = express();
 ConectMongo();
-const cors = require('cors');    
+    
 const corsOpts = {
     origin: '*',
     credentials: true,
