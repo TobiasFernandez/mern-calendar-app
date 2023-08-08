@@ -10,7 +10,7 @@ ConectMongo();
 
 //directorio publico
 app.use(cors())
-var whitelist = ['http://mern-calendar-app-production-tbo.up.railway.appmern-calendar-app-production-tbo.up.railway.app']
+var whitelist = ['https://serene-biscochitos-a1ead1.netlify.app']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
