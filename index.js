@@ -31,8 +31,8 @@ var corsOptions = {
 //rutas
 //lectura y parseo del body(info que recibo desde postaman en un POST)
 app.use(express.json());
-app.use('/api/auth',require('./routes/auth'));
-app.use('/api/events',require('./routes/eventsRoutes'));
+app.use('/api/auth',cors(corsOptions),require('./routes/auth'));
+app.use('/api/events',cors(corsOptions),require('./routes/eventsRoutes'));
 app.use(express.static('public'));
 
 
