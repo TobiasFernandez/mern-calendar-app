@@ -8,14 +8,14 @@ const cors= require("cors");
 const app = express();
 ConectMongo();
     
-const corsOpts = {
-    origin: 'https://mern-calendar-app-production-1e03.up.railway.app',
-    credentials: true,
-    methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
-    allowedHeaders: ['Content-Type'],
-    exposedHeaders: ['Content-Type']
-};
-app.use(cors(corsOpts));
+//const corsOpts = {
+//    origin: 'https://mern-calendar-app-production-1e03.up.railway.app',
+//    credentials: true,
+//    methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
+//    allowedHeaders: ['Content-Type'],
+//    exposedHeaders: ['Content-Type']
+//};
+app.use(cors());
 
 //directorio publico
 
@@ -50,9 +50,9 @@ app.use('/api/events',require('./routes/eventsRoutes'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.get('/*', function(req,res) {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+//app.get('/*', function(req,res) {
+//  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+//});
 //escuchar peticiones
 app.listen(process.env.PORT,()=>{
     console.log(`servidor corriendo en el puerto ${process.env.PORT}`);
